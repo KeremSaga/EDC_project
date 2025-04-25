@@ -8,30 +8,34 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 # Load the data
 data = pd.read_csv("GenreClassData_30s.txt", sep="\t")
 
-# Select relevant features and target labels
-features = ['spectral_rolloff_mean', 'mfcc_1_mean', 'spectral_centroid_mean', 'tempo']
-target = 'Genre'
+# Select relevant features
+features = [
+    'spectral_rolloff_mean',
+    'mfcc_1_mean',
+    'spectral_centroid_mean',
+    'tempo'
+    ]
 
-# Split the dataset using the "Type" column 
+# Split the dataset
 train_data = data[data['Type'] == 'Train']
 test_data = data[data['Type'] == 'Test']
 
 X_train = train_data[features]
-y_train = train_data[target]
+y_train = train_data['Genre']
 
 X_test = test_data[features]
-y_test = test_data[target]
+y_test = test_data['Genre']
 
-# 4. Scale the features
+# Scale the features
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-# 5. Create and train the k-NN classifier
+# Create and train the k-NN classifier
 knn = KNeighborsClassifier(n_neighbors=5)
 knn.fit(X_train_scaled, y_train)
 
-# 6. Evaluate the classifier
+# Evaluate the classifier
 y_pred = knn.predict(X_test_scaled)
 accuracy = accuracy_score(y_test, y_pred)
 cm = confusion_matrix(y_test, y_pred)
