@@ -8,19 +8,23 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 # Load the data
 data = pd.read_csv("GenreClassData_30s.txt", sep="\t")
 
-# Select relevant features and target labels
-features = ['spectral_rolloff_mean', 'mfcc_1_mean', 'spectral_centroid_mean', 'tempo']
-target = 'Genre'
+# Select relevant features
+features = [
+    'spectral_rolloff_mean',
+    'mfcc_1_mean',
+    'spectral_centroid_mean',
+    'tempo'
+    ]
 
-# Split the dataset using the "Type" column 
+# Split the dataset
 train_data = data[data['Type'] == 'Train']
 test_data = data[data['Type'] == 'Test']
 
 X_train = train_data[features]
-y_train = train_data[target]
+y_train = train_data['Genre']
 
 X_test = test_data[features]
-y_test = test_data[target]
+y_test = test_data['Genre']
 
 # Scale the features
 scaler = StandardScaler()
