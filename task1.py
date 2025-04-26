@@ -42,7 +42,6 @@ cm = confusion_matrix(y_test, y_pred)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=knn.classes_)
 
 print("Accuracy: {:.2f}%".format(accuracy * 100))
-plt.figure(figsize=(10, 8))
 disp.plot(cmap=plt.cm.Blues, xticks_rotation=45)
 plt.title("Confusion Matrix for k-NN Genre Classifier (k=5)")
 plt.grid(False)

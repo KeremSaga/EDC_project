@@ -94,21 +94,18 @@ for feature_combos in combinations(features, 3):
 print("Best accuracy: {:.2f}%".format(best_accuracy * 100))
 print(f"Best set: {best_features}")
 
+# Plot the accuracies and mark the best one
 plt.figure()
 plt.plot(range(len(accuracies)), accuracies, label='Accuracies')
-
-# Find index of best accuracy
 best_index = np.argmax(accuracies)
-
-# Plot the red dot
 plt.scatter(best_index, accuracies[best_index], color='red', label='Best Accuracy')
-
 plt.xlabel("All possible set indices")
 plt.ylabel("Accuracies")
 plt.title("Accuracies of all feature set combinations")
 plt.legend()
 plt.grid()
 
+## Generate confusion matrix for the best features
 
 X_train = train_data[best_features]
 y_train = train_data['Genre']
@@ -129,9 +126,9 @@ knn.fit(X_train_scaled, y_train)
 y_pred = knn.predict(X_test_scaled)
 accuracy = accuracy_score(y_test, y_pred)
 cm = confusion_matrix(y_test, y_pred)
-disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=knn.classes_)
 
-plt.figure(figsize=(10, 8))
+# Display confusion matrix
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=knn.classes_)
 disp.plot(cmap=plt.cm.Blues, xticks_rotation=45)
 plt.title("Confusion Matrix for k-NN Genre Classifier (k=5)")
 plt.grid(False)
