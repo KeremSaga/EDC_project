@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, confusion_matrix
 
 # Load the data
-data = pd.read_csv("GenreClassData_30s.txt", sep="\t")
+data = pd.read_csv("data/GenreClassData_30s.txt", sep="\t")
 
 # Select relevant features
 features = [

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load the data
-data = pd.read_csv('GenreClassData_30s.txt', sep='\t')
+data = pd.read_csv('data/GenreClassData_30s.txt', sep='\t')
 
 # Filter data for the four genres
 selected_genres = ['pop', 'disco', 'metal', 'classical']
