@@ -133,21 +133,14 @@ def main():
     print("\nTask 3:")
     accuracies, best_accuracy, best_features = find_best_feature_set(data, train_data, test_data, features, k=k)
 
-    print("Best Accuracy: {:.2f}%".format(best_accuracy * 100))
     print("Best Feature Set:", best_features)
-
-    # Plot accuracy for all feature combinations
     plot_accuracies(accuracies)
 
-    # Train and evaluate model with the best feature set
     X_train = train_data[best_features]
-    y_train = train_data['Genre'].values
     X_test = test_data[best_features]
-    y_test = test_data['Genre'].values
 
     X_train_scaled, X_test_scaled = scale_features(X_train, X_test)
     y_pred = knn_classifier(X_train_scaled, y_train, X_test_scaled, k=k)
-
     evaluate_model(y_test, y_pred, labels=np.unique(y_train), k=k)
 
 if __name__ == "__main__":
