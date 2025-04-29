@@ -1,9 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.metrics import ConfusionMatrixDisplay
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
 from itertools import combinations
 import time
 import numpy as np
@@ -90,9 +89,14 @@ for feature_combos in combinations(features, 3):
         if accuracy > best_accuracy:
             best_accuracy = accuracy
             best_features = current_features
+            # Training accuracy to check for overfitting (for reflection, can't do much about it since overfitting is caused by k, which is fixed to k=5 in this task)
+            y_train_pred = knn.predict(X_train_scaled)
+            training_accuracy = accuracy_score(y_train, y_train_pred)
 
 print("Best accuracy: {:.2f}%".format(best_accuracy * 100))
 print(f"Best set: {best_features}")
+
+print("Best sets training accuracy: {:.2f}%".format(training_accuracy * 100))
 
 # Plot the accuracies and mark the best one
 plt.figure()
@@ -135,6 +139,6 @@ plt.grid(False)
 plt.tight_layout()
 
 end_time = time.time()
-print("Total time to run the code: {:.2f} seconds".format(end_time - start_time))
+print("Total time to run task 3: {:.2f} seconds".format(end_time - start_time))
 
 plt.show()
