@@ -3,6 +3,9 @@ from sklearn.metrics import accuracy_score
 import numpy as np
 import matplotlib.pyplot as plt
 from itertools import combinations
+import time
+
+start_time = time.time()
 
 def find_best_feature_set(data, train_data, test_data, base_features, k=5):
     accuracies = []
@@ -71,7 +74,7 @@ def main():
     data, train_data, test_data = load_data(filepath, features)
     accuracies, best_accuracy, best_features = find_best_feature_set(data, train_data, test_data, features, k=k)
 
-    print("Best Feature Set:", best_features)
+    print("\nBest Feature Set:", best_features)
     plot_accuracies(accuracies)
 
     X_train = train_data[best_features].values
@@ -82,6 +85,9 @@ def main():
     X_train_scaled, X_test_scaled = scale_features(X_train, X_test)
     y_pred = knn_classifier(X_train_scaled, y_train, X_test_scaled, k=k)
     evaluate_model(y_test, y_pred, labels=np.unique(y_train), k=k)
+
+    end_time = time.time()
+    print("\nTotal time to run task 3: {:.2f} seconds".format(end_time - start_time))
 
 if __name__ == "__main__":
     main()

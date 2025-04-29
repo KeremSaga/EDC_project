@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
 from collections import Counter
+import time
+
+start_time = time.time()
 
 def load_data(filepath, features):
     # Load dataset from file and split into training and testing sets  
@@ -42,7 +45,7 @@ def evaluate_model(y_true, y_pred, labels, k):
     accuracy = accuracy_score(y_true, y_pred)
     cm = confusion_matrix(y_true, y_pred)
     
-    print(f"Accuracy: {accuracy * 100:.2f}%")
+    print(f"\nAccuracy: {accuracy * 100:.2f}%")
     disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=labels)
     disp.plot(cmap=plt.cm.Blues, xticks_rotation=45)
     plt.title(f"Confusion Matrix for k-NN Classifier (k={k})")
@@ -69,6 +72,9 @@ def main():
     X_train_scaled, X_test_scaled = scale_features(X_train, X_test)
     y_pred = knn_classifier(X_train_scaled, y_train, X_test_scaled, k=k)
     evaluate_model(y_test, y_pred, labels=np.unique(y_train), k=k)
+
+    end_time = time.time()
+    print("\nTotal time to run task 1: {:.2f} seconds".format(end_time - start_time))
 
 if __name__ == "__main__":
     main()
