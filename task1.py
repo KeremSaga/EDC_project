@@ -22,24 +22,6 @@ def scale_features(X_train, X_test):
     X_test_scaled = scaler.transform(X_test)
     return X_train_scaled, X_test_scaled
 
-# def knn_classifier(X_train, y_train, X_test, k=5):
-#     predictions = []
-#     for x in X_test:
-#         # Calculate Euclidean distance from x to all training points
-#         distances = np.linalg.norm(X_train - x, axis=1)
-        
-#         # Find the indices of the k nearest neighbors
-#         nearest_indices = distances.argsort()[:k]
-        
-#         # Get the labels of the nearest neighbors
-#         nearest_labels = y_train[nearest_indices]
-        
-#         # Majority vote: pick the most common label
-#         most_common = Counter(nearest_labels).most_common(1)[0][0]
-#         predictions.append(most_common)
-    
-#     return np.array(predictions)
-
 def knn_classifier(X_train, y_train, X_test, k=5):
     predictions = []
     for i, x in enumerate(X_test):
