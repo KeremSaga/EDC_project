@@ -1,6 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import time
+
+start_time = time.time()
 
 # Load the data
 data = pd.read_csv('data/GenreClassData_30s.txt', sep='\t')
@@ -14,6 +17,8 @@ features = ['spectral_rolloff_mean', 'mfcc_1_mean',
            'spectral_centroid_mean', 'tempo']
 colors = {'pop': 'blue', 'disco': 'green', 
          'metal': 'red', 'classical': 'purple'}
+
+first_plot = True
 
 # Create histogram plots for each feature
 for feature in features:
@@ -33,4 +38,8 @@ for feature in features:
     plt.ylabel('Frequency', fontsize=12)
     plt.legend(title='Genre')
     plt.grid(alpha=0.3)
+    if first_plot:
+        end_time = time.time()
+        print("\nTotal time to run task 2: {:.2f} seconds".format(end_time - start_time))
+        first_plot = False
     plt.show()

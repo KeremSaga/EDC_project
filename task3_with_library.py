@@ -93,8 +93,8 @@ for feature_combos in combinations(features, 3):
             y_train_pred = knn.predict(X_train_scaled)
             training_accuracy = accuracy_score(y_train, y_train_pred)
 
-print("Best accuracy: {:.2f}%".format(best_accuracy * 100))
-print(f"Best set: {best_features}")
+print(f"\nBest Feature Set: {best_features}")
+print("\nBest test accuracy: {:.2f}%".format(best_accuracy * 100))
 
 print("Best sets training accuracy: {:.2f}%".format(training_accuracy * 100))
 
@@ -139,6 +139,6 @@ plt.grid(False)
 plt.tight_layout()
 
 end_time = time.time()
-print("Total time to run task 3: {:.2f} seconds".format(end_time - start_time))
+print("\nTotal time to run task 3: {:.2f} seconds".format(end_time - start_time))
 
 plt.show()
