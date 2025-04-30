@@ -52,7 +52,7 @@ print("Training Accuracy: {:.2f}%".format(acc_train * 100))
 cm = confusion_matrix(y_test, y_pred)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=rf.classes_)
 disp.plot(cmap=plt.cm.Blues, xticks_rotation=45)
-plt.title("Random Forest Confusion Matrix for 30s segments")
+plt.title("Random Forest Confusion Matrix")
 plt.grid(False)
 plt.tight_layout()
 
@@ -70,6 +70,6 @@ print(f"Number of features used: {len(used_features)}")
 # print(used_features)
 
 end_time = time.time()
-print("\nTotal time to run task 4 30s: {:.2f} seconds".format(end_time - start_time))
+print("\nTotal time to run task 4: {:.2f} seconds".format(end_time - start_time))
 
 plt.show()
