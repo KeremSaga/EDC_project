@@ -139,6 +139,6 @@ plt.grid(False)
 plt.tight_layout()
 
 end_time = time.time()
-print("\nRuntime task 3 w/ library: {:.2f} seconds".format(end_time - start_time))
+print("\nRuntime task 3 w/ library: {:.2f} seconds\n".format(end_time - start_time))
 
 plt.show()

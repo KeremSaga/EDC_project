@@ -70,6 +70,6 @@ print(f"Number of features used: {len(used_features)}")
 # print(used_features)
 
 end_time = time.time()
-print("\nRuntime task 4: {:.2f} seconds".format(end_time - start_time))
+print("\nRuntime task 4: {:.2f} seconds\n".format(end_time - start_time))
 
 plt.show()

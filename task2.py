@@ -40,6 +40,6 @@ for feature in features:
     plt.grid(alpha=0.3)
     if first_plot:
         end_time = time.time()
-        print("\nRuntime task 2: {:.2f} seconds".format(end_time - start_time))
+        print("\nRuntime task 2: {:.2f} seconds\n".format(end_time - start_time))
         first_plot = False
     plt.show()

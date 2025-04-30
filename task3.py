@@ -60,6 +60,10 @@ def plot_accuracies(accuracies):
     plt.title("Accuracies of Feature Set Combinations")
     plt.legend()
     plt.grid()
+
+    end_time = time.time()
+    print("\nRuntime task 3: {:.2f} seconds".format(end_time - start_time))
+
     plt.show()
 
 def main():
@@ -86,9 +90,6 @@ def main():
     X_train_scaled, X_test_scaled = scale_features(X_train, X_test)
     y_pred = knn_classifier(X_train_scaled, y_train, X_test_scaled, k=k)
     y_train_pred = knn_classifier(X_train_scaled, y_train, X_train_scaled, k=k)
-
-    end_time = time.time()
-    print("\nRuntime task 3: {:.2f} seconds".format(end_time - start_time))
     
     evaluate_model(y_test, y_pred, y_train, y_train_pred, labels=np.unique(y_train), k=k)
 

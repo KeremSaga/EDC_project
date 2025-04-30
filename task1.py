@@ -51,7 +51,7 @@ def evaluate_model(y_true, y_pred, y_train, y_train_pred, labels, k):
     cm = confusion_matrix(y_true, y_pred)
     
     print(f"\nTest accuracy: {accuracy * 100:.2f}%")
-    print(f"Training accuracy: {train_accuracy * 100:.2f}%")
+    print(f"Training accuracy: {train_accuracy * 100:.2f}%\n")
     disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=labels)
     disp.plot(cmap=plt.cm.Blues, xticks_rotation=45)
     plt.title(f"Confusion Matrix for k-NN Classifier (k={k})")
