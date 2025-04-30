@@ -63,7 +63,7 @@ print("\nTop 5 most important features:")
 print(importances.head(5))
 print(f"\nSum of feature importances: {importances.sum()}")
 
-# Print used features
+# Print used features (with enough trees all the features are used)
 used_features = importances[importances > 0].index.tolist()
 print(f"Number of features used: {len(used_features)}")
 # print("Used features:")
