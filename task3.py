@@ -77,6 +77,7 @@ def main():
     print("\nBest Feature Set:", best_features)
     plot_accuracies(accuracies)
 
+    # Extract features from dataset
     X_train = train_data[best_features].values
     y_train = train_data['Genre'].values
     X_test = test_data[best_features].values
@@ -85,10 +86,11 @@ def main():
     X_train_scaled, X_test_scaled = scale_features(X_train, X_test)
     y_pred = knn_classifier(X_train_scaled, y_train, X_test_scaled, k=k)
     y_train_pred = knn_classifier(X_train_scaled, y_train, X_train_scaled, k=k)
-    evaluate_model(y_test, y_pred, y_train, y_train_pred, labels=np.unique(y_train), k=k)
 
     end_time = time.time()
-    print("\nTotal time to run task 3: {:.2f} seconds".format(end_time - start_time))
+    print("\nRuntime: {:.2f} seconds".format(end_time - start_time))
+    
+    evaluate_model(y_test, y_pred, y_train, y_train_pred, labels=np.unique(y_train), k=k)
 
 if __name__ == "__main__":
     main()
