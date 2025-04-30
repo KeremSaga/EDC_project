@@ -54,6 +54,6 @@ plt.grid(False)
 plt.tight_layout()
 
 end_time = time.time()
-print("\nTotal time to run task 1 w/ library: {:.2f} seconds".format(end_time - start_time))
+print("\nRuntime task 1 w/ library: {:.2f} seconds".format(end_time - start_time))
 
 plt.show()

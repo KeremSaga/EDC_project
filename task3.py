@@ -88,7 +88,7 @@ def main():
     y_train_pred = knn_classifier(X_train_scaled, y_train, X_train_scaled, k=k)
 
     end_time = time.time()
-    print("\nRuntime: {:.2f} seconds".format(end_time - start_time))
+    print("\nRuntime task 3: {:.2f} seconds".format(end_time - start_time))
     
     evaluate_model(y_test, y_pred, y_train, y_train_pred, labels=np.unique(y_train), k=k)
 
